@@ -3,7 +3,7 @@ module.exports = {
     title: `글감 저장소`,
     author: {
       name: `Alex`,
-      summary: `who lives and works in Seoul building iOS App.`,
+      summary: `who lives and works in Seoul building Mobile App.`,
     },
     description: `개발 글 저장소`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
@@ -99,13 +99,14 @@ module.exports = {
                     frontmatter {
                       title
                       date
+                      estimated
                     }
                   }
                 }
               }
             `,
             output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            title: "글감 저장소 RSS Feed",
           },
         ],
       },
@@ -113,7 +114,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
+        name: `글감 저장소`,
         short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#ffffff`,

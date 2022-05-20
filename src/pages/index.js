@@ -1,8 +1,8 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
+import Bio from "../components/bio"
 import Seo from "../components/seo"
 
 const BlogIndex = ({ data, location }) => {
@@ -30,7 +30,7 @@ const BlogIndex = ({ data, location }) => {
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
-
+          console.log(post)
           return (
             <li key={post.fields.slug}>
               <article
@@ -82,6 +82,7 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+          estimated
         }
       }
     }
