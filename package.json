@@ -52,6 +52,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby clean && gatsby build && gh-pages -d public -b release"
+    "deploy": "gatsby clean && gatsby build && gh-pages -d public -b release",
+    "publish": "gh-pages -d public -b release"
   }
 }
