@@ -35,10 +35,10 @@ const Bio = () => {
       <StaticImage
         className="bio-avatar"
         layout="fixed"
-        formats={["auto", "webp", "avif"]}
-        src="../images/profile-pic.png"
+        formats={["auto", "webp", "avif", "jpg"]}
+        src="../images/profile-pic.jpg"
         width={50}
-        height={50}
+        height={60}
         quality={95}
         alt="Profile picture"
       />
@@ -46,8 +46,13 @@ const Bio = () => {
         <p>
           Written by <strong>{author.name}</strong> {author?.summary || null}
           {` `}
-          <a href={`https://twitter.com/${social?.twitter || ``}`}>
-            You should follow them on Twitter
+          <br />
+          <a
+            href={`https://github.com/${social?.github || ``}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Check out on Github
           </a>
         </p>
       )}
