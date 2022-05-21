@@ -1,0 +1,7 @@
+p {
+  margin-bottom: var(--spacing-3);
+}
+
+ol {
+  margin-left: var(--spacing-4);
+}
