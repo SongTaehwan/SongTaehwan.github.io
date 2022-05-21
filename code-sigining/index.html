@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta data-react-helmet="true" name="twitter:description" content="Code Signing 이 무엇이고 왜 필요한지 알아보자."/><meta data-react-helmet="true" name="twitter:title" content="[Xcode] Code Signing"/><meta data-react-helmet="true" name="twitter:creator" content=""/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="Code Signing 이 무엇이고 왜 필요한지 알아보자."/><meta data-react-helmet="true" property="og:title" content="[Xcode] Code Signing"/><meta data-react-helmet="true" name="description" content="Code Signing 이 무엇이고 왜 필요한지 알아보자."/><meta name="generator" content="Gatsby 4.14.1"/><style data-href="/styles.17034ff4e1f1eb473b44.css" data-identity="gatsby-global-css">@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:100;src:local("Montserrat Thin "),local("Montserrat-Thin"),url(/static/montserrat-latin-100-8d7d79679b70dbe27172b6460e7a7910.woff2) format("woff2"),url(/static/montserrat-latin-100-ec38980a9e0119a379e2a9b3dbb1901a.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:100;src:local("Montserrat Thin italic"),local("Montserrat-Thinitalic"),url(/static/montserrat-latin-100italic-e279051046ba1286706adc886cf1c96b.woff2) format("woff2"),url(/static/montserrat-latin-100italic-3b325a3173c8207435cd1b76e19bf501.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:200;src:local("Montserrat Extra Light "),local("Montserrat-Extra Light"),url(/static/montserrat-latin-200-9d266fbbfa6cab7009bd56003b1eeb67.woff2) format("woff2"),url(/static/montserrat-latin-200-2d8ba08717110d27122e54c34b8a5798.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:200;src:local("Montserrat Extra Light italic"),local("Montserrat-Extra Lightitalic"),url(/static/montserrat-latin-200italic-6e5b3756583bb2263eb062eae992735e.woff2) format("woff2"),url(/static/montserrat-latin-200italic-a0d6f343e4b536c582926255367a57da.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:300;src:local("Montserrat Light "),local("Montserrat-Light"),url(/static/montserrat-latin-300-00b3e893aab5a8fd632d6342eb72551a.woff2) format("woff2"),url(/static/montserrat-latin-300-ea303695ceab35f17e7d062f30e0173b.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:300;src:local("Montserrat Light italic"),local("Montserrat-Lightitalic"),url(/static/montserrat-latin-300italic-56f34ea368f6aedf89583d444bbcb227.woff2) format("woff2"),url(/static/montserrat-latin-300italic-54b0bf2c8c4c12ffafd803be2466a790.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:400;src:local("Montserrat Regular "),local("Montserrat-Regular"),url(/static/montserrat-latin-400-b71748ae4f80ec8c014def4c5fa8688b.woff2) format("woff2"),url(/static/montserrat-latin-400-0659a9f4e90db5cf51b50d005bff1e41.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:400;src:local("Montserrat Regular italic"),local("Montserrat-Regularitalic"),url(/static/montserrat-latin-400italic-6eed6b4cbb809c6efc7aa7ddad6dbe3e.woff2) format("woff2"),url(/static/montserrat-latin-400italic-7583622cfde30ae49086d18447ab28e7.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:500;src:local("Montserrat Medium "),local("Montserrat-Medium"),url(/static/montserrat-latin-500-091b209546e16313fd4f4fc36090c757.woff2) format("woff2"),url(/static/montserrat-latin-500-edd311588712a96bbf435fad264fff62.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:500;src:local("Montserrat Medium italic"),local("Montserrat-Mediumitalic"),url(/static/montserrat-latin-500italic-c90ced68b46050061d1a41842d6dfb43.woff2) format("woff2"),url(/static/montserrat-latin-500italic-5146cbfe02b1deea5dffea27a5f2f998.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:600;src:local("Montserrat SemiBold "),local("Montserrat-SemiBold"),url(/static/montserrat-latin-600-0480d2f8a71f38db8633b84d8722e0c2.woff2) format("woff2"),url(/static/montserrat-latin-600-b77863a375260a05dd13f86a1cee598f.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:600;src:local("Montserrat SemiBold italic"),local("Montserrat-SemiBolditalic"),url(/static/montserrat-latin-600italic-cf46ffb11f3a60d7df0567f8851a1d00.woff2) format("woff2"),url(/static/montserrat-latin-600italic-c4fcfeeb057724724097167e57bd7801.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:700;src:local("Montserrat Bold "),local("Montserrat-Bold"),url(/static/montserrat-latin-700-7dbcc8a5ea2289d83f657c25b4be6193.woff2) format("woff2"),url(/static/montserrat-latin-700-99271a835e1cae8c76ef8bba99a8cc4e.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:700;src:local("Montserrat Bold italic"),local("Montserrat-Bolditalic"),url(/static/montserrat-latin-700italic-c41ad6bdb4bd504a843d546d0a47958d.woff2) format("woff2"),url(/static/montserrat-latin-700italic-6779372f04095051c62ed36bc1dcc142.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:800;src:local("Montserrat ExtraBold "),local("Montserrat-ExtraBold"),url(/static/montserrat-latin-800-db9a3e0ba7eaea32e5f55328ace6cf23.woff2) format("woff2"),url(/static/montserrat-latin-800-4e3c615967a2360f5db87d2f0fd2456f.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:800;src:local("Montserrat ExtraBold italic"),local("Montserrat-ExtraBolditalic"),url(/static/montserrat-latin-800italic-bf45bfa14805969eda318973947bc42b.woff2) format("woff2"),url(/static/montserrat-latin-800italic-fe82abb0bcede51bf724254878e0c374.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:900;src:local("Montserrat Black "),local("Montserrat-Black"),url(/static/montserrat-latin-900-e66c7edc609e24bacbb705175669d814.woff2) format("woff2"),url(/static/montserrat-latin-900-8211f418baeb8ec880b80ba3c682f957.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:900;src:local("Montserrat Black italic"),local("Montserrat-Blackitalic"),url(/static/montserrat-latin-900italic-4454c775e48152c1a72510ceed3603e2.woff2) format("woff2"),url(/static/montserrat-latin-900italic-efcaa0f6a82ee0640b83a0916e6e8d68.woff) format("woff")}@font-face{font-display:swap;font-family:Merriweather;font-style:normal;font-weight:300;src:local("Merriweather Light "),local("Merriweather-Light"),url(/static/merriweather-latin-300-fc117160c69a8ea0851b26dd14748ee4.woff2) format("woff2"),url(/static/merriweather-latin-300-58b18067ebbd21fda77b67e73c241d3b.woff) format("woff")}@font-face{font-display:swap;font-family:Merriweather;font-style:italic;font-weight:300;src:local("Merriweather Light italic"),local("Merriweather-Lightitalic"),url(/static/merriweather-latin-300italic-fe29961474f8dbf77c0aa7b9a629e4bc.woff2) format("woff2"),url(/static/merriweather-latin-300italic-23c3f1f88683618a4fb8d265d33d383a.woff) format("woff")}@font-face{font-display:swap;font-family:Merriweather;font-style:normal;font-weight:400;src:local("Merriweather Regular "),local("Merriweather-Regular"),url(/static/merriweather-latin-400-d9479e8023bef9cbd9bf8d6eabd6bf36.woff2) format("woff2"),url(/static/merriweather-latin-400-040426f99ff6e00b86506452e0d1f10b.woff) format("woff")}@font-face{font-display:swap;font-family:Merriweather;font-style:italic;font-weight:400;src:local("Merriweather Regular italic"),local("Merriweather-Regularitalic"),url(/static/merriweather-latin-400italic-2de7bfeaf08fb03d4315d49947f062f7.woff2) format("woff2"),url(/static/merriweather-latin-400italic-79db67aca65f5285964ab332bd65f451.woff) format("woff")}@font-face{font-display:swap;font-family:Merriweather;font-style:normal;font-weight:700;src:local("Merriweather Bold "),local("Merriweather-Bold"),url(/static/merriweather-latin-700-4b08e01d805fa35d7bf777f1b24314ae.woff2) format("woff2"),url(/static/merriweather-latin-700-22fb8afba4ab1f093b6ef9e28a9b6e92.woff) format("woff")}@font-face{font-display:swap;font-family:Merriweather;font-style:italic;font-weight:700;src:local("Merriweather Bold italic"),local("Merriweather-Bolditalic"),url(/static/merriweather-latin-700italic-cd92541b177652fffb6e3b952f1c33f1.woff2) format("woff2"),url(/static/merriweather-latin-700italic-f87f3d87cea0dd0979bfc8ac9ea90243.woff) format("woff")}@font-face{font-display:swap;font-family:Merriweather;font-style:normal;font-weight:900;src:local("Merriweather Black "),local("Merriweather-Black"),url(/static/merriweather-latin-900-f813fc6a4bee46eda5224ac7ebf1b7be.woff2) format("woff2"),url(/static/merriweather-latin-900-5d4e42cb44410674acd99153d57df032.woff) format("woff")}@font-face{font-display:swap;font-family:Merriweather;font-style:italic;font-weight:900;src:local("Merriweather Black italic"),local("Merriweather-Blackitalic"),url(/static/merriweather-latin-900italic-b7901d85486871c1779c0e93ddd85656.woff2) format("woff2"),url(/static/merriweather-latin-900italic-9647f9fdab98756989a8a5550eb205c3.woff) format("woff")}
+
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{-webkit-text-size-adjust:100%;line-height:1.15}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}[hidden]{display:none}:root{--maxWidth-none:"none";--maxWidth-xs:20rem;--maxWidth-sm:24rem;--maxWidth-md:28rem;--maxWidth-lg:32rem;--maxWidth-xl:36rem;--maxWidth-2xl:42rem;--maxWidth-3xl:48rem;--maxWidth-4xl:56rem;--maxWidth-full:"100%";--maxWidth-wrapper:var(--maxWidth-2xl);--spacing-px:"1px";--spacing-0:0;--spacing-1:0.25rem;--spacing-2:0.5rem;--spacing-3:0.75rem;--spacing-4:1rem;--spacing-5:1.25rem;--spacing-6:1.5rem;--spacing-8:2rem;--spacing-10:2.5rem;--spacing-12:3rem;--spacing-16:4rem;--spacing-20:5rem;--spacing-24:6rem;--spacing-32:8rem;--fontFamily-sans:Montserrat,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--fontFamily-serif:"Merriweather","Georgia",Cambria,"Times New Roman",Times,serif;--font-body:var(--fontFamily-serif);--font-heading:var(--fontFamily-sans);--fontWeight-normal:400;--fontWeight-medium:500;--fontWeight-semibold:600;--fontWeight-bold:700;--fontWeight-extrabold:800;--fontWeight-black:900;--fontSize-root:16px;--lineHeight-none:1;--lineHeight-tight:1.1;--lineHeight-normal:1.5;--lineHeight-relaxed:1.625;--fontSize-0:0.833rem;--fontSize-1:1rem;--fontSize-2:1.2rem;--fontSize-3:1.44rem;--fontSize-4:1.728rem;--fontSize-5:2.074rem;--fontSize-6:2.488rem;--fontSize-7:2.986rem;--color-primary:#005b99;--color-text:#2e353f;--color-text-light:#4f5969;--color-heading:#1a202c;--color-heading-black:#000;--color-accent:#d1dce5}*,:after,:before{box-sizing:border-box}html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:var(--fontSize-root);line-height:var(--lineHeight-normal)}body{color:var(--color-text);font-family:var(--font-body);font-size:var(--fontSize-1)}footer{padding:var(--spacing-6) var(--spacing-0)}hr{background:var(--color-accent);border:0;height:1px}h1,h2,h3,h4,h5,h6{font-family:var(--font-heading);letter-spacing:-.025em;line-height:var(--lineHeight-tight);margin-bottom:var(--spacing-6);margin-top:var(--spacing-12)}h2,h3,h4,h5,h6{color:var(--color-heading);font-weight:var(--fontWeight-bold)}h1{color:var(--color-heading-black);font-size:var(--fontSize-6);font-weight:var(--fontWeight-black)}h2{font-size:var(--fontSize-5)}h3{font-size:var(--fontSize-4)}h4{font-size:var(--fontSize-3)}h5{font-size:var(--fontSize-2)}h6{font-size:var(--fontSize-1)}h1>a,h2>a,h3>a,h4>a,h5>a,h6>a{color:inherit;text-decoration:none}p{--baseline-multiplier:0.179;--x-height-multiplier:0.35;line-height:var(--lineHeight-relaxed);margin:var(--spacing-0) var(--spacing-0) var(--spacing-8) var(--spacing-0)}ol,p,ul{padding:var(--spacing-0)}ol,ul{list-style-image:none;list-style-position:outside;margin-bottom:var(--spacing-8);margin-left:var(--spacing-0);margin-right:var(--spacing-0)}ol li,ul li{padding-left:var(--spacing-0)}li>p,ol li,ul li{margin-bottom:calc(var(--spacing-8)/2)}li :last-child{margin-bottom:var(--spacing-0)}li>ul{margin-left:var(--spacing-8);margin-top:calc(var(--spacing-8)/2)}blockquote{border-left:var(--spacing-1) solid var(--color-primary);color:var(--color-text-light);font-size:var(--fontSize-2);font-style:italic;margin-bottom:var(--spacing-8);margin-left:calc(var(--spacing-6)*-1);margin-right:var(--spacing-8);padding:var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-6)}blockquote>:last-child{margin-bottom:var(--spacing-0)}blockquote>ol,blockquote>ul{list-style-position:inside}table{border-collapse:collapse;border-spacing:.25rem;margin-bottom:var(--spacing-8);width:100%}table thead tr th{border-bottom:1px solid var(--color-accent)}a{color:var(--color-primary)}a:focus,a:hover{text-decoration:none}.global-wrapper{margin:var(--spacing-0) auto;max-width:var(--maxWidth-wrapper);padding:var(--spacing-10) var(--spacing-5)}.global-wrapper[data-is-root-path=true] .bio{margin-bottom:var(--spacing-20)}.global-header{margin-bottom:var(--spacing-12)}.main-heading{font-size:var(--fontSize-7);margin:0}.post-list-item{margin-bottom:var(--spacing-8);margin-top:var(--spacing-8)}.post-list-item p{margin-bottom:var(--spacing-0)}.post-list-item h2{color:var(--color-primary);font-size:var(--fontSize-4);margin-bottom:var(--spacing-2);margin-top:var(--spacing-0)}.post-list-item header{margin-bottom:var(--spacing-4)}.header-link-home{font-family:var(--font-heading);font-size:var(--fontSize-2);font-weight:var(--fontWeight-bold);text-decoration:none}.bio{display:flex;margin-bottom:var(--spacing-16)}.bio p,.bio-avatar{margin-bottom:var(--spacing-0)}.bio-avatar{border-radius:100%;margin-right:var(--spacing-4);min-width:50px}.blog-post header h1{margin:var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0)}.blog-post header p{font-family:var(--font-heading);font-size:var(--fontSize-2)}.blog-post-nav ul{margin:var(--spacing-0)}.gatsby-highlight{margin-bottom:var(--spacing-8)}@media (max-width:42rem){blockquote{margin-left:var(--spacing-0);padding:var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-4)}ol,ul{list-style-position:inside}}p{margin-bottom:var(--spacing-3)}ol{margin-left:var(--spacing-4)}code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#000;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;text-shadow:0 1px #fff;white-space:pre;word-break:normal;word-spacing:normal}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{background:#b3d4fc;text-shadow:none}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{background:hsla(0,0%,100%,.5);color:#9a6e3a}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link rel="alternate" type="application/rss+xml" title="글감 저장소 RSS Feed" href="/rss.xml"/><link rel="icon" href="/favicon-32x32.png?v=4a9773549091c227cd2eb82ccd9c5e3a" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=4a9773549091c227cd2eb82ccd9c5e3a"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=4a9773549091c227cd2eb82ccd9c5e3a"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=4a9773549091c227cd2eb82ccd9c5e3a"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=4a9773549091c227cd2eb82ccd9c5e3a"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=4a9773549091c227cd2eb82ccd9c5e3a"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=4a9773549091c227cd2eb82ccd9c5e3a"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=4a9773549091c227cd2eb82ccd9c5e3a"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=4a9773549091c227cd2eb82ccd9c5e3a"/><title data-react-helmet="true">[Xcode] Code Signing | 글감 저장소</title></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="global-wrapper" data-is-root-path="false"><header class="global-header"><a class="header-link-home" href="/">글감 저장소</a></header><main><article class="blog-post" itemscope="" itemType="http://schema.org/Article"><header><h1 itemProp="headline">[Xcode] Code Signing</h1><p>May 21, 2022<br/><small style="color:gray">10 min</small></p></header><section itemProp="articleBody"><p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/1d1e81254fe9170edc3ce71065bcfb7f/d7542/code-sigining.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 40.50632911392405%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABFUlEQVQoz2VRSY6EQAzjByBO7Fs3+47Y4YCQ+AH//0pGjlQI9RysJBR22SnJsiwCTNPkqus6hWFI0zRRVVXUti01TcN913Xco36/XzIMgwRfQHqLid51Xcrz/BGr65qKouAqEMcxeZ5HQRCQ7/vMYcG32FvUcRz6fD4MEDGDBGCGCM4gCMAx/mGHsI6oqIiDeJqmkaIopKoqybLM5Ou66DzPfziOg+775lQSRLIs42hlWXLMKIp4XpblQd/3/B3CqL/A3m3bJgl2IQIC3A3DwDdBEA8zzzON48g99pgkyRP9F7xDKL+XjbhpmrJbQLwsepxB9Hfn792zoIgEF3ADMnq4xQyXQnhdV563bWMe+n3f+TKs7w8l7uuxVKykYQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Xcode Code Sigining"
+        title="Xcode Code Sigining"
+        src="/static/1d1e81254fe9170edc3ce71065bcfb7f/f058b/code-sigining.png"
+        srcset="/static/1d1e81254fe9170edc3ce71065bcfb7f/c26ae/code-sigining.png 158w,
+/static/1d1e81254fe9170edc3ce71065bcfb7f/6bdcf/code-sigining.png 315w,
+/static/1d1e81254fe9170edc3ce71065bcfb7f/f058b/code-sigining.png 630w,
+/static/1d1e81254fe9170edc3ce71065bcfb7f/d7542/code-sigining.png 810w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>처음으로 Xcode 에서 앱을 빌드하거나 배포를 위해 Archive 를 할 때 <code class="language-text">Code Signing</code>에 대해 고민하게 될 것이다.
+<code class="language-text">Code Signing</code> 이 무엇이고 왜 필요한지 알아보자.</p>
+<p>목차는 다음과 같다.</p>
+<ol>
+<li>Code Signing</li>
+<li>Signing Certificate</li>
+<li>Provisioning Profile</li>
+<li>TL;DR</li>
+</ol>
+<h2>Code Signing</h2>
+<blockquote>
+<p>Code signing your app assures users that it’s from a known source and hasn’t been modified since it was last signed.
+Before your app can integrate app services, be installed on a device, or be submitted to the App Store, it must be signed with a certificate issued by Apple.</p>
+</blockquote>
+<p>애플 문서에 따르면 사용자에게 앱이 서명된 이후로 변경되지 않았음을 증명하고 기기에 설치하거나 앱 스토어에 제출하기 전에 <strong>반드시</strong> 애플로부터 발급받은 인증서와 함께 서명해야한다고 언급되어 있다.</p>
+<p>앱을 서명한다는 말이 무슨 뜻일까?</p>
+<p>계약서에 서명해본 적이 있다면 이해하기 쉬울 것이다. 예를 들어, 새 휴대폰을 할부로 구매한다고 가정해보자. 계약서를 작성 및 본인의 서명을 하고 휴대폰을 받음으로써 계약이 완료된다.
+이때 계약서의 서명은 계약서에 제시된 조건과 내용을 인정하고 동의한다는 의미로 작성된다. 또한 계약이 완료된 시점으로부터 양측 계약 당사자 모두 <strong>법적으로 인정과 보호</strong>를 받는다. 이렇게 작성된 계약서는 계약 당사자 한 쪽이 마음대로 <strong>내용을 바꾸더라도 법적으로 인정받지 못하고</strong> 처벌을 받게 된다.</p>
+<p>여기서 기억해야할 것은 두 가지이다.</p>
+<ol>
+<li><code class="language-text">계약서</code>에 서명 후 마음대로 수정할 수 없다.</li>
+<li>서명된 <code class="language-text">계약서</code>은 <code class="language-text">법</code>에 의해 인정받고 보호받는다.</li>
+</ol>
+<p><code class="language-text">Code Signing</code> 도 계약서에 서명하는 것처럼 작성한 코드에 디지털 서명을 하는 것과 같다. 위에서 언급한 <code class="language-text">계약서</code>는 <code class="language-text">앱</code>으로, <code class="language-text">법</code> 은 <code class="language-text">애플</code>로 바뀌서 다시 읽어보자.
+<code class="language-text">Code Signing</code> 은 서명된 앱이 서명된 후로 변경되지 않았음을 애플로부터 증명받는 과정이다.</p>
+<p>만약 앱 서명 이후에 어떠한 방법으로든 앱이 변조되면 앱스토어의 심사를 통하지 못하거나, 디바이스에서 실행되지 않는다. apk 파일만 있으면 설치하고 실행하는 문제가 없는 안드로이드를 떠올려보자. 요즘 보이스 피싱은 특정 앱을 인터넷에서 다운받아 설치하도록 유도하도 해당 앱을 통해 돈을 훔친다고 한다. <code class="language-text">Code Signing</code> 덕분에 애플 기기에 악의적인 목적을 가진 앱으로부터 안전할 수 있다.</p>
+<p>그렇다면 누가, 언제 앱 서명의 확인을 해야할 필요가 있는 걸까?</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 538px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/53a00bad8a4ca703c24d68a92aa6f4fc/9516f/code-signing-xcode.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 99.36708860759494%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAABYlAAAWJQFJUiTwAAAC6ElEQVQ4y42U204aYRDHeQdvEHaXPYCLgGHFUyKSNMZDOXhAiYhIwWiRemVi0kavTGyjXjZpL9obvesr0AuTNmmiSS/6An2DPsS/+U/ZFaqkvZidne+b+c3MN9+uT1EUhMNhmKYpYlmW9y5C2zBgUDr7/UTXdfj4oMGAbpDRgZiaKlDbjiIRiwnc/DtpR1iYLxQKPQpkkKEEEG69Ruz6B1JvPyNdrCPpjMEw9AfVud35NE3rAbqtCTSkwjr/CqcNPP34HdFXnxCefAJDDUrCblBfoEA7WtdUxF9+Qeb9L0xW38A5/wnTycDQ7oH/rPBeLBiqH3blGvHyB8RK7xB78Q1mJAZTD/X4/gfQEKBM1wzDtGwY9hh004ZphP7sPTKUHqC0qOtQVVXg1LS5ryoKdE2BZRnemiu03WsnQE6ZgKGhIezs7GB3dxd7e3uoVqvY3NzE82ZT1mq1Z8jmcmi1Wjg4OECj0cD+/r74JRIJYXjXhnQCJyYmMDo6imQyCcdxRKdSKYyPj4seHh4WTR9q+tPn0Qqj0SgKhQLy+TzW19exurqKlZUVzM7OYnl5GWtra1hcXMT8/LzoUqkkUi6XBUyOVNh9hnTc2toSEAMJct+7bSbb2Njw7JGREe8sBciXXC4njqxuYWFBKi0Wi5ibm5M9N5HbAWFcY5UshAxvypFIRBzpwMyuE4EMZrtMls1mJRkTEF6pVJDPF8QnHo9Ll94ZTk1NyQaBBC0tLUkAz4g2E9AmiNUxAcFMnslken8O7p/Ftm0RTpyaWd01tsPBsRsGUtOPa+7dlJb5P+Q1YMtsqbsC2pz89PS0rJ2enuLk5ETk6OhI9PHxMc7OzqQTQn2BQEBK5oVtNpsSdHFxgcvLSxweHso64Qy8vb3Fzc0N2u02rq6uRNO+u7sTKIuTobC1mZkZpNPpB8Jk7IC6Xq/Ll7G9vY1arSaaNr8w3lcem8/v98t3Ozg42FeCwSDoNzAw0Ffoxwp/A28Vmk6wVjQJAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Xcode-Warning"
+        title="Xcode-Warning"
+        src="/static/53a00bad8a4ca703c24d68a92aa6f4fc/9516f/code-signing-xcode.png"
+        srcset="/static/53a00bad8a4ca703c24d68a92aa6f4fc/c26ae/code-signing-xcode.png 158w,
+/static/53a00bad8a4ca703c24d68a92aa6f4fc/6bdcf/code-signing-xcode.png 315w,
+/static/53a00bad8a4ca703c24d68a92aa6f4fc/9516f/code-signing-xcode.png 538w"
+        sizes="(max-width: 538px) 100vw, 538px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>개발 중인 앱을 실제 기기에서 실행시킬 때 위의 문구를 보았을 것이다. 문구에 따르면 서명이 유효하지 않거나, 불충분한 entitlement 또는 프로파일이 사용자로부터 신뢰받지 못한 경우 앱을 실행할 수 없다고 한다.</p>
+<p><small style="color: gray;">*Xcode 가 자동으로 생성해준 Certificate 를 사용함에도 위의 경고가 뜨는 이유는 주로 앱의 Provisioning profile 이 애플 개발자 포털에 등록되어 있지 않기 때문이다.</small></p>
+<p>코드 서명은 설치된 앱을 실행하거나 앱스토어에 제출할 때 디바이스나 애플에 의해 확인된다.</p>
+<p>앱 서명은 어떤 과정과 방법으로 이루어질까?</p>
+<h2>Signing Certificate</h2>
+<p>앱 서명은 Certificate 라는 인증서를 발급받아 사용하는 것으로 할 수 있다. Certificate 에는 디지털 서명뿐만아니라 발급 신청자와 발급한 기관에 대한 정보도 담겨있다.</p>
+<blockquote>
+<p>계약서에 서명한 하면 됐지 다른건 왜 필요하지? 라는 의문이 들 수 있다.</p>
+</blockquote>
+<p>다시 현실 세계로 돌아와 계약서를 떠올려보자. 계약서에 서명한 당사자가 본인이라면 문제가 없을 것이다. 그러나 이점을 악용하여 서명을 위조하는 경우도 존재한다. 실제로 계약 절차에는 서명 하는 사람의 본인 인증을 위해 주민등록증을 제시하고 사본을 복사하는 과정을 거친다. 주민등록증도 공문서의 일종으로 정부가 발급하기에 우리는 신분 확인에 제시되는 주민등록증을 신뢰할 수 있다.</p>
+<p>특히나 디지털 세계에서는 얼굴을 맞대고 서명하는 것이 아니기 때문에 서명을 하는 사람에 대한 정보가 필요하고 해당 정보를 인증해줄 권위 있는 기관이 필요한 것이다. 쉽게 말해 디지털 신분증을 발급 받아야하는 것이다.</p>
+<p>다행히도 애플이 서명이 포함된 디지털 신분증(Certificate)을 발급해주는 기관의 역할도 겸하고 있다. 이러한 기관을 CA(Certificate Authority) 라고 한다.</p>
+<p>Certificate 내용에는 몇 가지 정보가 담겨있다.</p>
+<ol>
+<li>발급을 요청한 사람/기관</li>
+<li>인증서 발급 기관</li>
+<li>인증서 만료일</li>
+<li>서명</li>
+<li>인증서 사용 목적</li>
+</ol>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/d699fbbfc1aa48fff147043bd28ede75/6af66/signature.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 92.40506329113923%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAABYlAAAWJQFJUiTwAAACD0lEQVQ4y42UV27DQAxEfQr33nvvBTbc4X7/yzB4A6wgGUqQD0LSSjt85HAVSafTNhqNbLvd2mAwsH6/b5PJxKrVqkWjUUskEop4PK5IJpOKWCwWuh5JpVLW6/VsPp/b7Xazx+Nhz+fThsOhNZtN63Q61m63rdvt6rtarWaNRkMQvHMQ9XpdEBEIISkUChK8XC52Op0ksNlsbLVaSQhqkrARIZ75ZjweS5wkhARB5YPr9Sqxw+GgTVCzns1mLZPJWC6Xs2KxaPl8XmvuSrCukp1gqVQS3X6/l6CjgnK324kCmuVyabPZTMkI7heLhSpBQ4L0kewI3e93kdKb9XqtBJD4G/9boCNTKIc+QnE8HiWCERBBiDC9YxMAf4UIsZ8N5/NZlO/3W85RBoKUQp9I/i9BPsTlVqtllUpF/aPJCJXLZSV0JbkIK9czxWWGkJIxwZUMJSUzMjxjhDMBg6iANd6xHhCkbAYXSugYckziSjLmlLH6fD6aCJJzCLjyzPuIE+PqjhnBGhmn06nGB8Og5J41xoXgHjqqoLIAIW7/1fAwU/x99cYmjNDfeGbQv+buAfgOj5AHSsIMAncZHc4rBlAy95RMK/xzGSD0o7OBBtN4zjJCJGGcEODEYBp/IUwLa4FXMtmgZLBfr5eOHk13/0ZEIUeUf+E3XWCw/ZQIQYgADjJrzBk/YK78ovxi34Q/H0oT0MdWdSoAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="signature"
+        title="signature"
+        src="/static/d699fbbfc1aa48fff147043bd28ede75/f058b/signature.png"
+        srcset="/static/d699fbbfc1aa48fff147043bd28ede75/c26ae/signature.png 158w,
+/static/d699fbbfc1aa48fff147043bd28ede75/6bdcf/signature.png 315w,
+/static/d699fbbfc1aa48fff147043bd28ede75/f058b/signature.png 630w,
+/static/d699fbbfc1aa48fff147043bd28ede75/6af66/signature.png 640w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>인증서의 <code class="language-text">Public Key Info</code> 부분에는 서명에 사용된 알고리즘에 대한 정보와 서명에 대한 정보를 확인할 수 있다.
+또한 이미지 하단 <code class="language-text">Usage</code> 부분에 Public key 를 디지털 서명에 사용할 수 있다고 용도가 표시되어있다. <small style="color: gray;">*인증서 정보는 Mac 에 설치된 <code class="language-text">Keychain Access</code> 앱을 통해 쉽게 확인할 수 있다.</small></p>
+<p>Certificate 발급은 <code class="language-text">Keychain Access</code> 을 통해 만든 CSR(Certificate Signature Request) 을 애플 개발자 포털에 업로드하여 발급 받을 수 있다. <small style="color: gray;">*애플 개발자 프로그램에 가입되어있어야 한다. 자세한 과정은 다음에 다뤄보기로 하겠다.</small></p>
+<p>애플을 통해 Certificate 를 발급 받았다면 사실상 Code Signing 에 필요한 서명은 준비가 된 것이다.</p>
+<h2>App ID</h2>
+<p>앱 서명이 준비되었다면 서명할 앱에 대한 정보를 애플의 개발자 포털에서 등록해야한다.</p>
+<p>앱을 등록하는 과정에서 해당 앱이 사용하는 다른 앱 서비스<small style="color: gray;">*MusicKit, ShazamKit</small>와 애플에서 제공하는 기능<small style="color: gray;">*애플 페이, iCloud, Maps, Push Notification 등</small> 에 대한 정보도 함께 등록해야한다.</p>
+<p>다른 서비스에 대한 정보(Entitlement)를 포함 시켜야하는 이유는 해당 기능들은 다른 앱과 데이터를 공유하고 상호작용하기 때문에 <code class="language-text">Code Signing</code> 프로세스와 통합되어있다. 악의적인 목적을 가진 앱으로부터 민감한 정보가 노출될 가능성을 보호하기 위한 조치이다.</p>
+<p>예를 들어, 앱이 애플 페이를 사용하고 있음에도 해당 정보를 등록하지 않으면 앱스토어 심사에 걸려 등록되지 않는다.</p>
+<h2>Provisioning Profile</h2>
+<p>Certificate 와 앱 등록을 마쳤다면 Provisioning Profile 을 만들 수 있다. Profile 에는 <strong>App ID</strong>, <strong>Certificate</strong>, 앱의 실행이 허용된 <strong>Device</strong>에 대한 정보와 앱이 사용하는 <strong>Entitlement</strong> 가 나열되어있다. 앱에 대한 신상명세서라고 볼 수 있다.</p>
+<ol>
+<li>App ID</li>
+<li>Certificate</li>
+<li>Device</li>
+<li>Entitlement</li>
+</ol>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/43045aceb7db52bb2b4ac3de0c8dd6b9/8b640/profile.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 61.39240506329114%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABOElEQVQoz4VTy26DMBDkX3NL+zW99p8ilEgcOeMoEW8MBu9Us8Kpk0C70sjr1zDjXZI8z3E6nZBlmSJNU52fz2dcLhede+/BEJGncSuScRwxTZMe4sUA5xzmecayLDrnfgzuhXsxkqZpUFUVhmGAtRZ93yuCqqAoBoNny7J820/qusb1elUSqiUxQWVb9mLC2+329AxK2LatzPPM1TfIelp+40FAu0VRgA5jN6qwbdtdazFRvE43dEYYY9QV351v6I0xi3OOHhcR0XFF+HRQ/SCkKqokCcGcYJW/i6I4WGs/ABy990cR+QRwEJGvVZW8Kt1tGwA9gApAvY6ae+8rEen2CF/bLCBhpe73u8rtuk7BPLK3L2dLYdM0YowRVttaK8MwiHNOouLuKtyCNjYbNC79f7/XXwp/AFraqcuFVPo8AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="profile"
+        title="profile"
+        src="/static/43045aceb7db52bb2b4ac3de0c8dd6b9/f058b/profile.png"
+        srcset="/static/43045aceb7db52bb2b4ac3de0c8dd6b9/c26ae/profile.png 158w,
+/static/43045aceb7db52bb2b4ac3de0c8dd6b9/6bdcf/profile.png 315w,
+/static/43045aceb7db52bb2b4ac3de0c8dd6b9/f058b/profile.png 630w,
+/static/43045aceb7db52bb2b4ac3de0c8dd6b9/40601/profile.png 945w,
+/static/43045aceb7db52bb2b4ac3de0c8dd6b9/78612/profile.png 1260w,
+/static/43045aceb7db52bb2b4ac3de0c8dd6b9/8b640/profile.png 1454w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>Xcode 를 통해 Provisioning Profile 을 등록하고 기기에 앱을 테스트하면 위에서 보았던 경고창은 더이상 나타나지 않을 것이다. 아카이브에 필요한 Code Signing 도 모두 준비된 셈이다.</p>
+<h2>TL;DR</h2>
+<p>Code Signing 은 다음 4 가지 사항을 모두 포함한다.</p>
+<ol>
+<li>앱이 변조되지 않았음을 증명하기 위한 서명을 포함한다.</li>
+<li>서명에는 Certificate 가 사용되고 Certificate 는 애플로부터 발급받는다.</li>
+<li>애플 개발자 포털에 앱을 등록하고 Entitlement 에 대한 정보도 포함시켜야한다.</li>
+<li>Provisioning Profile 에는 App ID, Certificate, 앱을 실행시킬 수 있는 Device 목록, Entitlement 정보가 포함된다.</li>
+</ol>
+<h3>참고자료</h3>
+<p><a href="https://developer.apple.com/support/code-signing/">Apple Official Document</a></p>
+<p><a href="https://michiganlabs.com/news/ios-code-signing">The Basic of iOS Code Signing</a></p>
+<p><a href="https://medium.com/ios-os-x-development/ios-code-signing-provisioning-in-a-nutshell-d5b247760bef">iOS Code Signing &#x26; Provisioning in a Nutshell</a></p>
+<p><a href="https://youtu.be/0lJvQ-442OY">Overview of iOS app signing</a></p>
+<p><a href="https://youtu.be/H6lpFRpyl14">HTTPS 가 뭐고 왜 쓰나요?</a></p></section><hr/><footer><div class="bio"><div data-gatsby-image-wrapper="" style="width:50px;height:60px" class="gatsby-image-wrapper bio-avatar"><div aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear;background-color:#f8f8f8;width:50px;height:60px;position:relative"></div><picture><source type="image/avif" data-srcset="/static/f792b97d16288a7d01de5d0cdd327aa5/ade6c/profile-pic.avif 50w,/static/f792b97d16288a7d01de5d0cdd327aa5/ef5a5/profile-pic.avif 100w" sizes="50px"/><source type="image/webp" data-srcset="/static/f792b97d16288a7d01de5d0cdd327aa5/f10f1/profile-pic.webp 50w,/static/f792b97d16288a7d01de5d0cdd327aa5/e373c/profile-pic.webp 100w" sizes="50px"/><img data-gatsby-image-ssr="" layout="fixed" data-main-image="" style="opacity:0" sizes="50px" decoding="async" loading="lazy" data-src="/static/f792b97d16288a7d01de5d0cdd327aa5/3b4d9/profile-pic.jpg" data-srcset="/static/f792b97d16288a7d01de5d0cdd327aa5/3b4d9/profile-pic.jpg 50w,/static/f792b97d16288a7d01de5d0cdd327aa5/dc624/profile-pic.jpg 100w" alt="Profile picture"/></picture><noscript><picture><source type="image/avif" srcSet="/static/f792b97d16288a7d01de5d0cdd327aa5/ade6c/profile-pic.avif 50w,/static/f792b97d16288a7d01de5d0cdd327aa5/ef5a5/profile-pic.avif 100w" sizes="50px"/><source type="image/webp" srcSet="/static/f792b97d16288a7d01de5d0cdd327aa5/f10f1/profile-pic.webp 50w,/static/f792b97d16288a7d01de5d0cdd327aa5/e373c/profile-pic.webp 100w" sizes="50px"/><img data-gatsby-image-ssr="" layout="fixed" data-main-image="" style="opacity:0" sizes="50px" decoding="async" loading="lazy" src="/static/f792b97d16288a7d01de5d0cdd327aa5/3b4d9/profile-pic.jpg" srcSet="/static/f792b97d16288a7d01de5d0cdd327aa5/3b4d9/profile-pic.jpg 50w,/static/f792b97d16288a7d01de5d0cdd327aa5/dc624/profile-pic.jpg 100w" alt="Profile picture"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><p>Written by <strong>Alex</strong> <!-- -->who lives and works in Seoul building Mobile App.<!-- --> <br/><a href="https://github.com/" target="_blank" rel="noreferrer">Check out on Github</a></p></div></footer></article><nav class="blog-post-nav"><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/opaque-type/">← <!-- -->[Swift] Opaque Type 이란?</a></li><li></li></ul></nav></main><footer>© <!-- -->2022<!-- -->, Built with<!-- --> <a href="https://www.gatsbyjs.com">Gatsby</a></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/code-sigining/";window.___webpackCompilationHash="531cb1514ec35eab5e5c";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-67664a8ccc6c9f02b880.js"],"app":["/app-c90fab754ee4f1545c64.js"],"component---src-pages-404-js":["/component---src-pages-404-js-27981ca7dd461cb4280e.js"],"component---src-pages-index-js":["/component---src-pages-index-js-c46f5ed808980809e7e0.js"],"component---src-pages-using-typescript-tsx":["/component---src-pages-using-typescript-tsx-2f9b97cf148785549d09.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-9089eec8e9350f880087.js"]};/*]]>*/</script><script src="/polyfill-67664a8ccc6c9f02b880.js" nomodule=""></script><script src="/app-c90fab754ee4f1545c64.js" async=""></script><script src="/framework-9f7f9e10b62e50725876.js" async=""></script><script src="/webpack-runtime-6234feac16338c3b9ce5.js" async=""></script></body></html>
