@@ -301,3 +301,7 @@ flippedTriangle.draw()
 3. 3 의 경우 타입캐스팅을 하지 않고 해당 프로토콜의 기능을 그대로 사용할 수 있다.
 4. [함수의 매개변수 타입이 특정 프로토콜을 채택한 타입인 경우 `Opaque Type` 을 인자로 전달할 수 있다.](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html#ID615)
    - 반면, 전달하고자하는 인자의 타입이 프로토콜인 경우에는 전달할 수 없다.
+
+Todo.
+
+Type Erasure 내용 추가할 것
