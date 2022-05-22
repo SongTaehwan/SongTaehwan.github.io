@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[글감 저장소 RSS Feed]]></title><description><![CDATA[개발 글 저장소]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 21 May 2022 13:47:26 GMT</lastBuildDate><item><title><![CDATA[[Xcode] Code Signing]]></title><description><![CDATA[처음으로 Xcode 에서 앱을 빌드하거나 배포를 위해 Archive 를 할 때 에 대해 고민하게 될 것이다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[글감 저장소 RSS Feed]]></title><description><![CDATA[개발 글 저장소]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 22 May 2022 02:45:54 GMT</lastBuildDate><item><title><![CDATA[[Xcode] Code Signing]]></title><description><![CDATA[처음으로 Xcode 에서 앱을 빌드하거나 배포를 위해 Archive 를 할 때 에 대해 고민하게 될 것이다.
  이 무엇이고 왜 필요한지 알아보자. 목차는 다음과 같다. Code Signing Signing Certificate Provisioning…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/code-sigining/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/code-sigining/</guid><pubDate>Sat, 21 May 2022 18:51:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
@@ -453,4 +453,6 @@ flippedTriangle&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt
 &lt;li&gt;반면, 전달하고자하는 인자의 타입이 프로토콜인 경우에는 전달할 수 없다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ol&gt;</content:encoded></item></channel></rss>
+&lt;/ol&gt;
+&lt;p&gt;Todo.&lt;/p&gt;
+&lt;p&gt;Type Erasure 내용 추가할 것&lt;/p&gt;</content:encoded></item></channel></rss>
