@@ -3,6 +3,7 @@ title: "[Xcode] Code Signing"
 date: "2022-05-21T18:51:00.000Z"
 description: Code Signing 이 무엇이고 왜 필요한지 알아보자.
 estimated: 10 min
+tags: Deployment
 ---
 
 ![Xcode Code Sigining](./code-sigining.png)

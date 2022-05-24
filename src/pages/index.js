@@ -30,7 +30,7 @@ const BlogIndex = ({ data, location }) => {
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
-
+          console.log(post)
           return (
             <li key={post.fields.slug}>
               <article
@@ -48,6 +48,10 @@ const BlogIndex = ({ data, location }) => {
                   <br />
                   <small style={{ color: "gray" }}>
                     {post.frontmatter.estimated}
+                  </small>
+                  <br />
+                  <small style={{ color: "gray" }}>
+                    {post.frontmatter.tags}
                   </small>
                 </header>
                 <section>
@@ -87,6 +91,7 @@ export const pageQuery = graphql`
           title
           description
           estimated
+          tags
         }
       }
     }

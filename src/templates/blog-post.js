@@ -9,7 +9,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-
+  console.log(data)
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
@@ -29,6 +29,8 @@ const BlogPostTemplate = ({ data, location }) => {
             <small style={{ color: "gray" }}>
               {post.frontmatter.estimated}
             </small>
+            <br />
+            <small style={{ color: "gray" }}>{post.frontmatter.tags}</small>
           </p>
         </header>
         <section
@@ -92,6 +94,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         description
         estimated
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

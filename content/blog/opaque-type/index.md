@@ -3,6 +3,7 @@ title: "[Swift] Opaque Type 이란?"
 date: "2022-05-08T22:40:32.169Z"
 description: Opaque Type 을 반환 타입(return type)으로 사용하는 함수 또는 메소드는 반환 값의 타입 정보를 감출 수 있다고 쓰여있다.
 estimated: 15 min
+tags: Feature
 ---
 
 ```Swift

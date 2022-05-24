@@ -100,6 +100,7 @@ module.exports = {
                       title
                       date
                       estimated
+                      tags
                     }
                   }
                 }
