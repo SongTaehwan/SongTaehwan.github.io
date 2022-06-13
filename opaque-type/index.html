@@ -222,9 +222,7 @@
 <span class="token keyword">let</span> triangle <span class="token operator">=</span> <span class="token class-name">Triangle</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">let</span> flippedTriangle <span class="token operator">=</span> <span class="token function">flip</span><span class="token punctuation">(</span>triangle<span class="token punctuation">)</span> <span class="token comment">// 🚨 ERROR!</span></code></pre></div>
 <p>에러 메시지에 <code class="language-text">Shape as a type</code> 라고 언급된 것처럼 매개변수 shape 은 <code class="language-text">Shape</code> 프로토콜을 채택한 타입을 의미하지 않는다. 즉, Shape 이라는 프로토콜 타입을 매개변수의 타입으로 정했다는 것이다.</p>
-<ul>
-<li>매개변수의 타입을 Int, String, Bool 로 지정하는 것처럼 프로토콜이라는 타입으로 지정했을 뿐이다.</li>
-</ul>
+<p><small style="color: gray;">매개변수의 타입을 Int, String, Bool 로 지정하는 것처럼 프로토콜이라는 타입으로 지정했을 뿐이다.</small></p>
 <p>반면, FlippedShape 구조체의 매개변수는 Shape 프로토콜을 채택한 타입을 매개변수 타입으로 하기 때문에 두 타입이 같지 않다.</p>
 <h3>Case.2 매개변수의 타입이 제너릭인 경우</h3>
 <div class="gatsby-highlight" data-language="swift"><pre class="language-swift"><code class="language-swift"><span class="token keyword">func</span> <span class="token function-definition function">flip</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token punctuation">:</span> <span class="token class-name">Shape</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token omit keyword">_</span> shape<span class="token punctuation">:</span> <span class="token class-name">T</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">some</span> <span class="token class-name">Shape</span> <span class="token punctuation">{</span>
@@ -246,7 +244,7 @@ flippedTriangle<span class="token punctuation">.</span><span class="token functi
 </ul>
 </li>
 <li><a href="https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html#ID614">구체 타입이 보존되어있기 때문에 <code class="language-text">Self</code>, <code class="language-text">associated type</code> 을 사용하는 프로토콜도 리턴 타입으로 사용할 수 있다.</a></li>
-<li>3 의 경우 타입캐스팅을 하지 않고 해당 프로토콜의 기능을 그대로 사용할 수 있다.</li>
+<li>2 의 경우 타입캐스팅을 하지 않고 해당 프로토콜의 기능을 그대로 사용할 수 있다.</li>
 <li><a href="https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html#ID615">함수의 매개변수 타입이 특정 프로토콜을 채택한 타입인 경우 <code class="language-text">Opaque Type</code> 을 인자로 전달할 수 있다.</a>
 <ul>
 <li>반면, 전달하고자하는 인자의 타입이 프로토콜인 경우에는 전달할 수 없다.</li>
