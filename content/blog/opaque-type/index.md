@@ -273,7 +273,7 @@ let flippedTriangle = flip(triangle) // 🚨 ERROR!
 
 에러 메시지에 `Shape as a type` 라고 언급된 것처럼 매개변수 shape 은 `Shape` 프로토콜을 채택한 타입을 의미하지 않는다. 즉, Shape 이라는 프로토콜 타입을 매개변수의 타입으로 정했다는 것이다.
 
-- 매개변수의 타입을 Int, String, Bool 로 지정하는 것처럼 프로토콜이라는 타입으로 지정했을 뿐이다.
+<small style="color: gray;">매개변수의 타입을 Int, String, Bool 로 지정하는 것처럼 프로토콜이라는 타입으로 지정했을 뿐이다.</small>
 
 반면, FlippedShape 구조체의 매개변수는 Shape 프로토콜을 채택한 타입을 매개변수 타입으로 하기 때문에 두 타입이 같지 않다.
 
@@ -299,7 +299,7 @@ flippedTriangle.draw()
 1. `Opaque Type` 은 함수와 메소드 리턴 값의 타입 정보를 감추지만 본래의 타입 정보를 보존한다.
    - 클라이언트는 감춰진 타입 정보에 접근할 수 없지만 컴파일러는 접근할 수 있다.
 2. [구체 타입이 보존되어있기 때문에 `Self`, `associated type` 을 사용하는 프로토콜도 리턴 타입으로 사용할 수 있다.](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html#ID614)
-3. 3 의 경우 타입캐스팅을 하지 않고 해당 프로토콜의 기능을 그대로 사용할 수 있다.
+3. 2 의 경우 타입캐스팅을 하지 않고 해당 프로토콜의 기능을 그대로 사용할 수 있다.
 4. [함수의 매개변수 타입이 특정 프로토콜을 채택한 타입인 경우 `Opaque Type` 을 인자로 전달할 수 있다.](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html#ID615)
    - 반면, 전달하고자하는 인자의 타입이 프로토콜인 경우에는 전달할 수 없다.
 
